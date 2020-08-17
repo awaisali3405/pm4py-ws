@@ -1,4 +1,4 @@
-FROM tiangolo/uwsgi-nginx-flask
+FROM tiangolo/uwsgi-nginx-flask:python3.6
 
 RUN apt-get update
 RUN apt-get -y upgrade
@@ -24,8 +24,8 @@ RUN echo "log_manager_default_variant = 'multinode_file_based'" >> /app/pm4pywsc
 #RUN pip install --no-cache-dir -U pyOpenSSL
 #RUN cd /app/ssl_cert_gen && python create.py
 
-RUN mkdir -p /app/webapp2
 RUN rm -rRf /app/webapp2
+RUN mkdir -p /app/webapp2
 #RUN cd / && git clone https://github.com/pm-tk/source.git
 #RUN cd / && mv /source /app/webapp2
 #RUN cd /app/webapp2 && npm install && npm install --save-dev --unsafe-perm node-sass && npm install -g @angular/core @angular/cli @angular/material
