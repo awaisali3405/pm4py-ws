@@ -33,4 +33,4 @@ RUN mkdir -p /app/webapp2
 
 RUN cd /app/webapp2 && wget http://www.alessandroberti.it/dist.tar && tar xvf dist.tar
 
-RUN cd /app && python setup.py install
+#RUN cd /app && python setup.py install
