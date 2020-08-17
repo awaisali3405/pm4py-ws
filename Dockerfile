@@ -12,7 +12,7 @@ COPY ./docker-sec-confs/nginx.conf /etc/nginx/nginx.conf
 #COPY ./docker-sec-confs/nginx_ssl.conf /etc/nginx/conf.d/nginx_ssl.conf
 COPY ./docker-sec-confs/jail.local /etc/fail2ban/jail.local
 
-RUN pip install --no-cache-dir -U pm4py==1.1.26 Flask flask-cors setuptools
+RUN pip install --no-cache-dir -U pm4py==1.1.26 pandas==0.25.3 Flask flask-cors setuptools
 RUN pip install --no-cache-dir -U pm4pycvxopt
 #RUN pip install --no-cache-dir -U pm4pybpmn
 COPY . /app
@@ -26,8 +26,8 @@ RUN echo "log_manager_default_variant = 'multinode_file_based'" >> /app/pm4pywsc
 
 RUN mkdir -p /app/webapp2
 RUN rm -rRf /app/webapp2
-RUN cd / && git clone https://github.com/pm-tk/source.git
-RUN cd / && mv /source /app/webapp2
+#RUN cd / && git clone https://github.com/pm-tk/source.git
+#RUN cd / && mv /source /app/webapp2
 #RUN cd /app/webapp2 && npm install && npm install --save-dev --unsafe-perm node-sass && npm install -g @angular/core @angular/cli @angular/material
 #RUN cd /app/webapp2 && ng build --prod
 

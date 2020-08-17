@@ -4,9 +4,19 @@ except:
     pass
 
 
+import shutil
+import os
+
+if not os.path.exists("files"):
+    print("sii")
+    os.mkdir("files")
+if not os.path.exists("files/databases"):
+    files = os.listdir("files2/")
+    for f in files:
+        shutil.move("files2/" + f, "files/")
+
 from pm4pyws.entrypoint import PM4PyServices
 from pm4pywsconfiguration import configuration as Configuration
-import os
 
 app = PM4PyServices.app
 
