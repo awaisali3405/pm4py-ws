@@ -8,12 +8,14 @@ import shutil
 import os
 
 if not os.path.exists("files"):
-    print("sii")
     os.mkdir("files")
 if not os.path.exists("files/databases"):
     files = os.listdir("files2/")
     for f in files:
-        shutil.move("files2/" + f, "files/")
+        if os.path.isfile("files2/" + f):
+            shutil.copyfile("files2/" + f, "files/" + f)
+        else:
+            shutil.copytree("files2/" + f, "files/" + f)
 
 from pm4pyws.entrypoint import PM4PyServices
 from pm4pywsconfiguration import configuration as Configuration
