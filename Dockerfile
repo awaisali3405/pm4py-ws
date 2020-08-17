@@ -12,7 +12,7 @@ COPY ./docker-sec-confs/nginx.conf /etc/nginx/nginx.conf
 #COPY ./docker-sec-confs/nginx_ssl.conf /etc/nginx/conf.d/nginx_ssl.conf
 COPY ./docker-sec-confs/jail.local /etc/fail2ban/jail.local
 
-RUN pip install --no-cache-dir -U pm4py==1.1.26 pandas==0.25.3 Flask flask-cors setuptools
+RUN pip install --no-cache-dir -U pm4py==1.1.26 pandas==0.25.3 pyvis==0.1.5.0 networkx==2.2 matplotlib==2.2.2 numpy==1.16.0 ciso8601==2.1.1 lxml==4.3.0 graphviz==0.10.1 pyarrow==0.13.0 scipy==1.2.0 scikit-learn==0.20.2 pydotplus==2.0.2 pulp==1.6.9 pytz==2018.9 Flask flask-cors setuptools
 RUN pip install --no-cache-dir -U pm4pycvxopt
 #RUN pip install --no-cache-dir -U pm4pybpmn
 COPY . /app
