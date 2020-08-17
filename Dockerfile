@@ -4,7 +4,7 @@ RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get -y install nano vim git python3-pydot python-pydot python-pydot-ng graphviz python3-tk zip unzip curl ftp fail2ban python3-openssl
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash
-RUN apt-get install nodejs
+RUN apt-get install -y nodejs
 
 COPY ./docker-sec-confs/sysctl.conf /etc/sysctl.conf
 COPY ./docker-sec-confs/limits.conf /etc/security/limits.conf
