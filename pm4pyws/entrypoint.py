@@ -108,6 +108,7 @@ def get_user_from_session(session_id):
 
 class PM4PyServices:
     app = Flask(__name__, static_url_path='', static_folder=Configuration.static_folder)
+    app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024
     app.add_url_rule(app.static_url_path + '/<path:filename>', endpoint='static',
                      view_func=app.send_static_file)
     CORS(app)
@@ -1122,12 +1123,12 @@ def upload_log():
         if check_session_validity(session):
             user = get_user_from_session(session)
             if lh.check_user_enabled_upload(user):
+                filename = request.json["filename"]
+                base64_content = request.json["base64"]
+                basename = filename.split(".")[0] + "_" + generate_random_string(4)
                 try:
-                    filename = request.json["filename"]
-                    base64_content = request.json["base64"]
-                    basename = filename.split(".")[0] + "_" + generate_random_string(4)
                     extension = filename.split(".")[1]
-                    base64_content = base64_content.split(";base64,")[1]
+                    # base64_content = base64_content.split(";base64,")[1]
                     stru = base64.b64decode(base64_content).decode('utf-8')
 
                     if extension.lower() == "xes" or extension.lower() == "csv" or extension.lower() == "parquet":
@@ -1144,11 +1145,11 @@ def upload_log():
                         logging.info("upload_log complete session=" + str(session) + " user=" + str(user))
 
                         return jsonify({"status": "OK"})
-                except:
-                    logging.error(traceback.format_exc())
-                    pass
+                except Exception as e:
+                        logging.error(traceback.format_exc())
+                        return jsonify({"status": "FAIL", "error": str(e)})
 
-    return jsonify({"status": "FAIL"})
+    return jsonify({"status": "FAILaaaa",'session':session})
 
 
 @PM4PyServices.app.route("/getAlignmentsVisualizations", methods=["POST"])

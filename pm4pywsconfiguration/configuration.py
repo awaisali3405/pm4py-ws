@@ -1,4 +1,4 @@
-enable_upload = False
+enable_upload = True
 enable_download = True
 enable_load_local_path = False
 enable_session = False
@@ -24,3 +24,7 @@ overall_enable_sna = True
 overall_enable_sharing = True
 overall_enable_deletion = True
 overall_enable_dotted_chart = True
+enable_session = True
+static_folder = '/app/webapp2/dist'
+ssl_context_directory = '/app/ssl_cert_gen'
+log_manager_default_variant = 'multinode_file_based'
