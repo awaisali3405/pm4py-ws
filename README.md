@@ -1,5 +1,5 @@
-A demo is publicly available at address (be careful!):
-http://80.211.142.26/index.html
+This pm4py-ws new version that has fixed the bug in uploading file that was issue in original project
+Docker image : awaisali3405/pm4pynew
 using the username 'admin01' and the password 'admin01'
 
 HOW TO INSTALL FROM PIP:
